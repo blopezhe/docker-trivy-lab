@@ -27,7 +27,7 @@
 
 # === IMAGEN BASE ===
 # TODO: Cambiar esta imagen base (debian:13-slim es más moderna y segura)
-FROM debian:12-slim
+FROM debian:13-slim
 #FROM debian:10
 
 # === INSTALACIÓN DE PAQUETES ===
