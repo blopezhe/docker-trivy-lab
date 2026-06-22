@@ -27,13 +27,13 @@
 
 # === IMAGEN BASE ===
 # TODO: Cambiar esta imagen base (debian:13-slim es más moderna y segura)
-#FROM debian:11-slim
-FROM debian:10
+FROM debian:12-slim
+#FROM debian:10
 
 # === INSTALACIÓN DE PAQUETES ===
 # Cada RUN es una capa nueva → imagen más grande, cache ineficiente
-RUN apt-get update
-RUN apt-get install -y openssl
+RUN apt-get update apt-get update && apt-get install -y netcat-traditional && rm -rf /var/lib/apt/lists/*
+#RUN apt-get install -y openssl
 # Se han quitado estos paquetes inseguros (curl, wget) ya no pasan el escaneo de Trivy (CVE's críticas)
 # RUN apt-get install -y curl
 # RUN apt-get install -y wget
@@ -58,7 +58,9 @@ EXPOSE 80
 
 # === COMANDO DE INICIO ===
 # TODO: Reemplazar por un comando seguro
-CMD ["sh", "-c", "while true; do nc -l -p 80 -e /bin/bash; done"]
+CMD CMD ["sh", "-c", "echo '<h1>Hola desde github</h1>' > index.html && exec python3 -m http.server 8080"]
+
+
 
 # =============================================
 # RESUMEN DE CAMBIOS RECOMENDADOS:
