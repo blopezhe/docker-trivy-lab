@@ -27,7 +27,7 @@
 
 # === IMAGEN BASE ===
 # TODO: Cambiar esta imagen base (debian:13-slim es más moderna y segura)
-FROM debian:13-slim
+FROM python:3.11-alpine
 #FROM debian:10
 
 # === INSTALACIÓN DE PAQUETES ===
